@@ -58,7 +58,6 @@ test.describe('Basic Filtering', () => {
         expect(filteredStateProductTitles).not.toEqual(initialStateProductTitles);
         await sanderCheckbox.uncheck();
 
-
         await expect(combinationPliersProduct).toBeVisible();
 
         const restoredStateProductTitles = await page.locator('h5[data-test="product-name"]').allTextContents();
@@ -97,8 +96,6 @@ test.describe('Hierarchical Filtering', () => {
         await handToolsParentCategory.check();
 
         const childCount = await childHandToolCategories.count();
-
-
         expect(childCount).toBeGreaterThan(0);
 
         for (let i = 0; i < childCount; i++) {
@@ -116,37 +113,27 @@ test.describe('Category Data Validation', () => {
         const safetyGearCheckbox = page.getByRole('checkbox', { name: /^\s*Safety Gear\s*$/ })
         const productCards = page.locator('a.card')
         const productNames = productCards.getByRole('heading');
+        
         // Wait for product grid to render 
         await expect(productCards.first()).toBeVisible();
 
         const initialProductNames = await productNames.allTextContents();
-
         await safetyGearCheckbox.check();
-
-
 
         // Wait for product grid to rerender after filtering
         await expect(productNames).not.toHaveText(initialProductNames);
-
 
         const productUrls: string[] = [];
         const productNumber = await productCards.count();
 
         for (let i = 0; i < productNumber; i++) {
-
             const href = await productCards.nth(i).getAttribute('href');
-
-            if (href) {
-                productUrls.push(href);
+            if (href) {productUrls.push(href);
             }
         }
-
-
+        
         for (const productUrl of productUrls) {
-
-
             await page.goto(productUrl);
-
             const categoryLabel = page.locator('span[aria-label="category"]');
             await expect(categoryLabel).toContainText(/^\s*Safety Gear\s*$/)
         }
