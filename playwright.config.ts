@@ -29,13 +29,9 @@ export default defineConfig({
     /* Base URL to use in actions like `await page.goto('')`. */
     baseURL: 'https://practicesoftwaretesting.com',
     /* Collect trace when retrying the failed test. See https://playwright.dev/docs/trace-viewer */
-    headless: false,
-    launchOptions: {
-      slowMo: 800,
-    },
+    headless: true,
     trace: "on-first-retry",
     screenshot: "only-on-failure",
-
     video: "retain-on-failure",
   },
 
