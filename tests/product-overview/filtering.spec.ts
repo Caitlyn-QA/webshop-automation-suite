@@ -110,6 +110,8 @@ test.describe('Category Data Validation', () => {
 
     test('all visible products belong to selected category', async ({ page }) => {
 
+        test.skip(process.env.CI === 'true', 'Product detail pages are blocked by anti-bot protection on GitHub Actions');
+
         const safetyGearCheckbox = page.getByRole('checkbox', { name: /^\s*Safety Gear\s*$/ })
         const productCards = page.locator('a.card')
         const productNames = productCards.getByRole('heading');
@@ -135,14 +137,8 @@ test.describe('Category Data Validation', () => {
 
         for (const productUrl of productUrls) {
 
-            console.log(`Checking product: ${productUrl}`);
-
             await page.goto(productUrl);
-            console.log(`Current URL: ${page.url()}`);
-            console.log(`Page title: ${await page.title()}`);
-
             await expect(page.locator('h1[data-test="product-name"]')).toBeVisible();
-
             const categoryLabel = page.locator('span[aria-label="category"]');
 
             await expect(categoryLabel).toContainText(/^\s*Safety Gear\s*$/);

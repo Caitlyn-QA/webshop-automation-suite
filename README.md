@@ -36,6 +36,14 @@ The workflow:
 
 This helps verify that changes do not introduce regressions and provides automated feedback on every update.
 
+### CI Environment Note
+
+One product-detail validation test is excluded from GitHub Actions execution.
+
+During investigation, the test was found to pass consistently in a local environment but fail on GitHub-hosted runners because the Practice Software Testing website serves an anti-bot protection page ("Just a moment...") instead of the product detail page.
+
+The test remains part of the project and is executed locally. It is skipped only in the CI environment to prevent false failures caused by external website restrictions rather than application defects.
+
 ## Features Covered
 
 ### Product Grid Rendering (AC1)
