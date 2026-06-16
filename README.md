@@ -12,6 +12,7 @@ Practice Software Testing Website
 
 ## User Story Reference:
 
+Practice Software Testing – Product Overview User Story
 https://testsmith-io.github.io/practice-software-testing/#/user-stories/v5?id=product-overview
 
 ## Tech Stack
@@ -36,7 +37,11 @@ The workflow:
 
 This helps verify that changes do not introduce regressions and provides automated feedback on every update.
 
-### CI Environment Note
+### Example Successful Workflow Run
+
+![GitHub Actions Workflow](screenshots/github-actions-success.png)
+
+## CI Environment Note
 
 One product-detail validation test is excluded from GitHub Actions execution.
 
@@ -104,7 +109,7 @@ The test remains part of the project and is executed locally. It is skipped only
 
 ## Accessibility-Oriented Locator Strategy
 
-### Tests primarily use: getByRole() & getByLabel() to keep locators user-facing and maintainable.
+Tests primarily use: getByRole() & getByLabel() to keep locators user-facing and maintainable.
 
 ## Project Structure
 
