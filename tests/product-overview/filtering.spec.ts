@@ -113,7 +113,7 @@ test.describe('Category Data Validation', () => {
         const safetyGearCheckbox = page.getByRole('checkbox', { name: /^\s*Safety Gear\s*$/ })
         const productCards = page.locator('a.card')
         const productNames = productCards.getByRole('heading');
-        
+
         // Wait for product grid to render 
         await expect(productCards.first()).toBeVisible();
 
@@ -128,14 +128,23 @@ test.describe('Category Data Validation', () => {
 
         for (let i = 0; i < productNumber; i++) {
             const href = await productCards.nth(i).getAttribute('href');
-            if (href) {productUrls.push(href);
+            if (href) {
+                productUrls.push(href);
             }
         }
-        
+
         for (const productUrl of productUrls) {
+
+            console.log(`Checking product: ${productUrl}`);
+
             await page.goto(productUrl);
+
+            await expect(page.locator('h1[data-test="product-name"]')).toBeVisible();
+
             const categoryLabel = page.locator('span[aria-label="category"]');
-            await expect(categoryLabel).toContainText(/^\s*Safety Gear\s*$/)
+
+            await expect(categoryLabel).toContainText(/^\s*Safety Gear\s*$/);
+
         }
 
     });
