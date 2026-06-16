@@ -96,7 +96,7 @@ This helps verify that changes do not introduce regressions and provides automat
 
 ## Accessibility-Oriented Locator Strategy
 
-Tests primarily use: getByRole() & getByLabel() to keep locators user-facing and maintainable.
+### Tests primarily use: getByRole() & getByLabel() to keep locators user-facing and maintainable.
 
 ## Project Structure
 
