@@ -1,5 +1,7 @@
 # Webshop Automation Suite
 
+[![Playwright Tests](https://github.com/Caitlyn-QA/webshop-automation-suite/actions/workflows/playwright.yml/badge.svg)](https://github.com/Caitlyn-QA/webshop-automation-suite/actions/workflows/playwright.yml)
+
 ## Overview
 
 This project is a UI automation test suite built with Playwright and TypeScript against the Practice Software Testing application.
