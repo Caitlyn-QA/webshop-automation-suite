@@ -138,6 +138,8 @@ test.describe('Category Data Validation', () => {
             console.log(`Checking product: ${productUrl}`);
 
             await page.goto(productUrl);
+            console.log(`Current URL: ${page.url()}`);
+            console.log(`Page title: ${await page.title()}`);
 
             await expect(page.locator('h1[data-test="product-name"]')).toBeVisible();
 
